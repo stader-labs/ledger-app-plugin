@@ -40,9 +40,12 @@ void handle_query_contract_id(ethQueryContractID_t *msg) {
             break;
 
         case KELP_LST_DEPOSIT:
+            strlcpy(msg->name, "Kelp", msg->nameLength);
+            msgVersion = "LST Restake";
+            break;
         case KELP_ETH_DEPOSIT:
             strlcpy(msg->name, "Kelp", msg->nameLength);
-            msgVersion = "Stake";
+            msgVersion = "Native Restake";
             break;
 
         default:
