@@ -16,6 +16,8 @@ const signedPlugin = false;
 const inputData = "0xd0e30db0";
 
 nano_models.forEach(function (model) {
+
+  
   test(
     "[Nano " + model.letter + "] Deposit BNB",
     zemu(
