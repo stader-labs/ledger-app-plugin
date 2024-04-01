@@ -63,8 +63,7 @@ static bool set_account_addr_ui(ethQueryContractUI_t *msg, context_t *context) {
     // `msg->msg`.
     return getEthAddressStringFromBinary(
         context->account_addr,
-        (char *) msg->msg + 2,      // +2 because we've already prefixed with '0x'.
-        msg->pluginSharedRW->sha3,  // Used by the function to calculate the hash
+        (char *) msg->msg + 2,  // +2 because we've already prefixed with '0x'.
         chainid);
 }
 
