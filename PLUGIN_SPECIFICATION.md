@@ -62,3 +62,15 @@ Functions covered by above contract/s :
 |UserWithdrawalManager | claim(uint256 \_requestId) | `0x379607f5`| |
 |StaderStakePoolsManager | deposit(address \_receiver) | `0xf340fa01`| `_receiver`, native_token_amount (eth) |
 |UserWithdrawalManager | requestWithdraw(uint256 \_ethXAmount, address \_owner) | `0xccc143b8`| `_ethXAmount`, `_owner` |
+
+#### KELP
+
+| Network | Contract Name | Smart Contract                               |
+| ------- | ------------- | -------------------------------------------- |
+| Ethereum  | LRTDepositPool    | `0x036676389e48133B63a802f8635AD39E752D375D` |
+
+Functions covered by above contract/s :
+|Contract | Function | Selector | Displayed Parameters |
+| --- | --- | --- | --- |
+|LRTDepositPool | depositETH(uint256 minRSETHAmountExpected, string calldata referralId) | `0x72c51c0b`| native_token_amount (eth) |
+|LRTDepositPool | depositAsset(address asset, uint256 depositAmount, uint256 minRSETHAmountExpected, string calldata referralId) | `0xc3ae1766`| `asset`, `depositAmount` |
