@@ -146,12 +146,10 @@ void handle_query_contract_ui(ethQueryContractUI_t *msg) {
             break;
 
         case ETHX_DEPOSIT:
-        case ETHX_DEPOSIT_LEGACY:
             ret = handle_ethx_deposit(msg, context);
             break;
 
         case ETHX_REQUEST_WITHDRAW:
-        case ETHX_REQUEST_WITHDRAW_LEGACY:
             ret = handle_ethx_request_withdraw(msg, context);
             break;
 

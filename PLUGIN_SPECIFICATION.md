@@ -47,8 +47,6 @@ Functions covered by above contract/s :
 |StaderStakePoolsManager | deposit(address \_receiver, string calldata \_referralId) | `0xb7482509`| `_receiver`, native_token_amount (eth) |
 |UserWithdrawalManager | requestWithdraw(uint256 \_ethXAmount, address \_owner, string calldata \_referralId) | `0x1f7ec122`| `_ethXAmount`, `_owner` |
 |UserWithdrawalManager | claim(uint256 \_requestId) | `0x379607f5`| |
-|StaderStakePoolsManager | deposit(address \_receiver) | `0xf340fa01`| `_receiver`, native_token_amount (eth) |
-|UserWithdrawalManager | requestWithdraw(uint256 \_ethXAmount, address \_owner) | `0xccc143b8`| `_ethXAmount`, `_owner` |
 
 #### KELP
 

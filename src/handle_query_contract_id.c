@@ -13,7 +13,6 @@ void handle_query_contract_id(ethQueryContractID_t *msg) {
     // EDIT THIS: Adapt the cases by modifying the strings you pass to `strlcpy`.
     switch (context->selectorIndex) {
         case ETHX_DEPOSIT:
-        case ETHX_DEPOSIT_LEGACY:
         case ETH_MATICX_SUBMIT:
         case POLYGON_CHILDPOOL_SWAP_MATIC_FOR_MATICX_VIA_INSTANT_POOL:
         case BSC_STAKEMANAGER_DEPOSIT:
@@ -23,7 +22,6 @@ void handle_query_contract_id(ethQueryContractID_t *msg) {
         // case BSC_STAKEMANAGER_REQUEST_WITHDRAW:
         // the selector matches with `ETH_MATICX_REQUEST_WITHDRAW`
         case ETHX_REQUEST_WITHDRAW:
-        case ETHX_REQUEST_WITHDRAW_LEGACY:
         case ETH_MATICX_REQUEST_WITHDRAW:
         case POLYGON_CHILDPOOL_REQUEST_MATICX_SWAP:
             msgVersion = "Unstake";

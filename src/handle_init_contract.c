@@ -41,12 +41,10 @@ void handle_init_contract(ethPluginInitContract_t *msg) {
     // EDIT THIS: Adapt the `cases`, and set the `next_param` to be the first parameter you expect
     // to parse.
     switch (context->selectorIndex) {
-        case ETHX_DEPOSIT_LEGACY:
         case ETHX_DEPOSIT:
             context->next_param = ACCOUNT_ADDR;
             break;
 
-        case ETHX_REQUEST_WITHDRAW_LEGACY:
         case ETHX_REQUEST_WITHDRAW:
             context->next_param = UNSTAKE_AMOUNT;
             strlcpy(context->ticker, "ETHX", sizeof(context->ticker));

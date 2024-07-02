@@ -38,8 +38,6 @@
     X(ETHX_DEPOSIT, 0xb7482509)                                             \
     X(ETHX_REQUEST_WITHDRAW, 0x1f7ec122)                                    \
     X(ETHX_CLAIM, 0x379607f5)                                               \
-    X(ETHX_DEPOSIT_LEGACY, 0xf340fa01)                                      \
-    X(ETHX_REQUEST_WITHDRAW_LEGACY, 0xccc143b8)                             \
     X(KELP_LST_DEPOSIT, 0xc3ae1766)                                         \
     X(KELP_ETH_DEPOSIT, 0x72c51c0b)
 
