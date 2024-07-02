@@ -35,9 +35,6 @@
     X(BSC_STAKEMANAGER_DEPOSIT, 0xd0e30db0)                                 \
     X(BSC_STAKEMANAGER_REQUEST_WITHDRAW, 0x745400c9)                        \
     X(BSC_STAKEMANAGER_CLAIM_WITHDRAW, 0xb13acedd)                          \
-    X(FTM_DEPOSIT, 0xd0e30db0)                                              \
-    X(FTM_UNDELEGATE, 0x4f864df4)                                           \
-    X(FTM_WITHDRAW, 0x441a3e70)                                             \
     X(ETHX_DEPOSIT, 0xb7482509)                                             \
     X(ETHX_REQUEST_WITHDRAW, 0x1f7ec122)                                    \
     X(ETHX_CLAIM, 0x379607f5)                                               \

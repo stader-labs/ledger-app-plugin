@@ -67,7 +67,6 @@ void handle_init_contract(ethPluginInitContract_t *msg) {
             break;
 
         case BSC_STAKEMANAGER_DEPOSIT:
-            // case FTM_DEPOSIT: // the selector matches with `BSC_STAKEMANAGER_DEPOSIT`
             context->next_param = UNEXPECTED_PARAMETER;
             break;
 
@@ -79,12 +78,6 @@ void handle_init_contract(ethPluginInitContract_t *msg) {
             strlcpy(context->ticker, "MATICX", sizeof(context->ticker));
             break;
 
-        case FTM_UNDELEGATE:
-            context->next_param = UNSTAKE_AMOUNT;
-            strlcpy(context->ticker, "FTMX", sizeof(context->ticker));
-            context->skip_next_param = true;
-            break;
-
         case ETH_MATICX_CLAIM_WITHDRAWAL:
         case POLYGON_CHILDPOOL_CLAIM_MATICX_SWAP:
             context->next_param = UNEXPECTED_PARAMETER;
@@ -94,11 +87,6 @@ void handle_init_contract(ethPluginInitContract_t *msg) {
         case BSC_STAKEMANAGER_CLAIM_WITHDRAW:
             context->next_param = UNEXPECTED_PARAMETER;
             strlcpy(context->ticker, "BNB", sizeof(context->ticker));
-            break;
-
-        case FTM_WITHDRAW:
-            context->next_param = UNEXPECTED_PARAMETER;
-            strlcpy(context->ticker, "FTM", sizeof(context->ticker));
             break;
 
         case KELP_LST_DEPOSIT:

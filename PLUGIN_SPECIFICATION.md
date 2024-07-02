@@ -34,19 +34,6 @@ Functions covered by above contract/s :
 |StakeManager | requestWithdraw(uint256 \_amountInBnbX) | `0x745400c9`| `_amountInBnbX` |
 |StakeManager | claimWithdraw(uint256 \_idx) | `0xb13acedd`| |
 
-#### FTMx
-
-| Network | Contract Name | Smart Contract                               |
-| ------- | ------------- | -------------------------------------------- |
-| Fantom  | FTMStaking    | `0xb458bfc855ab504a8a327720fcef98886065529b` |
-
-Functions covered by above contract/s :
-|Contract | Function | Selector | Displayed Parameters |
-| --- | --- | --- | --- |
-|FTMStaking | deposit() | `0xd0e30db0`| native_token_amount (ftm) |
-|FTMStaking | undelegate(uint256 wrID, uint256 amountFTMx, uint256 minAmountFTM) | `0x4f864df4`| `amountFTMx` |
-|FTMStaking | withdraw(uint256 wrID, uint256 bitmaskToSkip) | `0x441a3e70`| |
-
 #### ETHx
 
 | Network  | Contract Name           | Smart Contract                               |

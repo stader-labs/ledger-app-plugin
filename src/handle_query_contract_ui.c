@@ -125,11 +125,10 @@ void handle_query_contract_ui(ethQueryContractUI_t *msg) {
             ret = set_stake_ui(msg, context);
             break;
 
-        case ETH_MATICX_REQUEST_WITHDRAW:
-        case POLYGON_CHILDPOOL_REQUEST_MATICX_SWAP:
         // case BSC_STAKEMANAGER_REQUEST_WITHDRAW:
         // the selector matches with `ETH_MATICX_REQUEST_WITHDRAW`
-        case FTM_UNDELEGATE:
+        case ETH_MATICX_REQUEST_WITHDRAW:
+        case POLYGON_CHILDPOOL_REQUEST_MATICX_SWAP:
             ret = set_unstake_ui(msg, context);
             break;
 
@@ -137,13 +136,11 @@ void handle_query_contract_ui(ethQueryContractUI_t *msg) {
         case ETH_MATICX_CLAIM_WITHDRAWAL:
         case POLYGON_CHILDPOOL_CLAIM_MATICX_SWAP:
         case BSC_STAKEMANAGER_CLAIM_WITHDRAW:
-        case FTM_WITHDRAW:
             ret = set_claim_ui(msg, context);
             break;
 
         case KELP_ETH_DEPOSIT:
         case POLYGON_CHILDPOOL_SWAP_MATIC_FOR_MATICX_VIA_INSTANT_POOL:
-        // case FTM_DEPOSIT: // the selector matches with `BSC_STAKEMANAGER_DEPOSIT`
         case BSC_STAKEMANAGER_DEPOSIT:
             ret = set_native_token_stake_ui(msg);
             break;

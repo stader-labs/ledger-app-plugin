@@ -29,10 +29,7 @@ static void handle_stake(ethPluginProvideParameter_t *msg, context_t *context) {
 }
 
 static void handle_unstake(ethPluginProvideParameter_t *msg, context_t *context) {
-    if (context->skip_next_param) {  // this is currently only useful in ftm_undelegate
-        context->skip_next_param = false;
-        return;
-    }
+    // TODO: check if it needs to be reverted
 
     switch (context->next_param) {
         case UNSTAKE_AMOUNT:
@@ -138,11 +135,10 @@ void handle_provide_parameter(ethPluginProvideParameter_t *msg) {
             handle_stake(msg, context);
             break;
 
-        case ETH_MATICX_REQUEST_WITHDRAW:
-        case POLYGON_CHILDPOOL_REQUEST_MATICX_SWAP:
         // case BSC_STAKEMANAGER_REQUEST_WITHDRAW:
         // the selector matches with `ETH_MATICX_REQUEST_WITHDRAW`
-        case FTM_UNDELEGATE:
+        case ETH_MATICX_REQUEST_WITHDRAW:
+        case POLYGON_CHILDPOOL_REQUEST_MATICX_SWAP:
             handle_unstake(msg, context);
             break;
 
@@ -152,9 +148,7 @@ void handle_provide_parameter(ethPluginProvideParameter_t *msg) {
         case POLYGON_CHILDPOOL_SWAP_MATIC_FOR_MATICX_VIA_INSTANT_POOL:
         case POLYGON_CHILDPOOL_CLAIM_MATICX_SWAP:
         case BSC_STAKEMANAGER_DEPOSIT:
-        // case FTM_DEPOSIT: // the selector matches with `BSC_STAKEMANAGER_DEPOSIT`
         case BSC_STAKEMANAGER_CLAIM_WITHDRAW:
-        case FTM_WITHDRAW:
             context->next_param = UNEXPECTED_PARAMETER;
             break;
         case KELP_LST_DEPOSIT:
