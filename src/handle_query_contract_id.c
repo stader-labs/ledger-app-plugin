@@ -43,6 +43,11 @@ void handle_query_contract_id(ethQueryContractID_t *msg) {
             msgVersion = "Native Restake";
             break;
 
+        case KELP_INITIATE_WITHDRAW:
+            strlcpy(msg->name, "Kelp", msg->nameLength);
+            msgVersion = "Unstake";
+            break;
+
         default:
             PRINTF("Selector index: %d not supported\n", context->selectorIndex);
             msg->result = ETH_PLUGIN_RESULT_ERROR;

@@ -39,7 +39,8 @@
     X(ETHX_REQUEST_WITHDRAW, 0x1f7ec122)                                    \
     X(ETHX_CLAIM, 0x379607f5)                                               \
     X(KELP_LST_DEPOSIT, 0xc3ae1766)                                         \
-    X(KELP_ETH_DEPOSIT, 0x72c51c0b)
+    X(KELP_ETH_DEPOSIT, 0x72c51c0b)                                         \
+    X(KELP_INITIATE_WITHDRAW, 0xc8393ba9)
 
 // Xmacro helpers to define the enum and map
 // Do not modify !

@@ -108,6 +108,35 @@ static bool handle_ethx_request_withdraw(ethQueryContractUI_t *msg, context_t *c
     return ret;
 }
 
+static bool handle_kelp_initiate_withdraw(ethQueryContractUI_t *msg, context_t *context) {
+    bool ret = false;
+
+    memset(msg->title, 0, msg->titleLength);
+    memset(msg->msg, 0, msg->msgLength);
+
+    switch (msg->screenIndex) {
+        case 0:
+            strlcpy(msg->title, "Unstake", msg->titleLength);
+            ret = amountToString(context->amount_received,
+                                 sizeof(context->amount_received),
+                                 WEI_TO_ETHER,
+                                 "RSETH",
+                                 msg->msg,
+                                 msg->msgLength);
+            break;
+
+        case 1:
+            strlcpy(msg->title, "Asset Expected", msg->titleLength);
+            strlcpy(msg->msg, context->ticker, msg->msgLength);
+            ret = true;
+            break;
+
+        default:
+            PRINTF("Received an invalid screenIndex\n");
+    }
+    return ret;
+}
+
 void handle_query_contract_ui(ethQueryContractUI_t *msg) {
     context_t *context = (context_t *) msg->pluginContext;
     bool ret = false;
@@ -151,6 +180,10 @@ void handle_query_contract_ui(ethQueryContractUI_t *msg) {
 
         case ETHX_REQUEST_WITHDRAW:
             ret = handle_ethx_request_withdraw(msg, context);
+            break;
+
+        case KELP_INITIATE_WITHDRAW:
+            ret = handle_kelp_initiate_withdraw(msg, context);
             break;
 
         default:

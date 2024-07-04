@@ -107,6 +107,23 @@ static void handle_kelp_lst_deposit(ethPluginProvideParameter_t *msg, context_t 
             break;
     }
 }
+
+static void handle_kelp_initiate_withdraw(ethPluginProvideParameter_t *msg, context_t *context) {
+    switch (context->next_param) {
+        case TOKEN_ADDR:
+            copy_address(context->token_addr, msg->parameter, sizeof(context->token_addr));
+            context->next_param = UNSTAKE_AMOUNT;
+            break;
+        case UNSTAKE_AMOUNT:
+            handle_amount_received(msg, context);
+            context->next_param = UNEXPECTED_PARAMETER;
+            break;
+        default:
+            handle_unsupported_param(msg);
+            break;
+    }
+}
+
 void handle_provide_parameter(ethPluginProvideParameter_t *msg) {
     context_t *context = (context_t *) msg->pluginContext;
     // We use `%.*H`: it's a utility function to print bytes. You first give
@@ -151,6 +168,9 @@ void handle_provide_parameter(ethPluginProvideParameter_t *msg) {
             break;
         case KELP_LST_DEPOSIT:
             handle_kelp_lst_deposit(msg, context);
+            break;
+        case KELP_INITIATE_WITHDRAW:
+            handle_kelp_initiate_withdraw(msg, context);
             break;
 
         default:
