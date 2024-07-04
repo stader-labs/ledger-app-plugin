@@ -41,12 +41,10 @@ void handle_init_contract(ethPluginInitContract_t *msg) {
     // EDIT THIS: Adapt the `cases`, and set the `next_param` to be the first parameter you expect
     // to parse.
     switch (context->selectorIndex) {
-        case ETHX_DEPOSIT_LEGACY:
         case ETHX_DEPOSIT:
             context->next_param = ACCOUNT_ADDR;
             break;
 
-        case ETHX_REQUEST_WITHDRAW_LEGACY:
         case ETHX_REQUEST_WITHDRAW:
             context->next_param = UNSTAKE_AMOUNT;
             strlcpy(context->ticker, "ETHX", sizeof(context->ticker));
@@ -67,7 +65,6 @@ void handle_init_contract(ethPluginInitContract_t *msg) {
             break;
 
         case BSC_STAKEMANAGER_DEPOSIT:
-            // case FTM_DEPOSIT: // the selector matches with `BSC_STAKEMANAGER_DEPOSIT`
             context->next_param = UNEXPECTED_PARAMETER;
             break;
 
@@ -77,12 +74,6 @@ void handle_init_contract(ethPluginInitContract_t *msg) {
         case POLYGON_CHILDPOOL_REQUEST_MATICX_SWAP:
             context->next_param = UNSTAKE_AMOUNT;
             strlcpy(context->ticker, "MATICX", sizeof(context->ticker));
-            break;
-
-        case FTM_UNDELEGATE:
-            context->next_param = UNSTAKE_AMOUNT;
-            strlcpy(context->ticker, "FTMX", sizeof(context->ticker));
-            context->skip_next_param = true;
             break;
 
         case ETH_MATICX_CLAIM_WITHDRAWAL:
@@ -96,17 +87,22 @@ void handle_init_contract(ethPluginInitContract_t *msg) {
             strlcpy(context->ticker, "BNB", sizeof(context->ticker));
             break;
 
-        case FTM_WITHDRAW:
-            context->next_param = UNEXPECTED_PARAMETER;
-            strlcpy(context->ticker, "FTM", sizeof(context->ticker));
-            break;
-
         case KELP_LST_DEPOSIT:
             context->next_param = TOKEN_ADDR;
             break;
 
         case KELP_ETH_DEPOSIT:
             context->next_param = UNEXPECTED_PARAMETER;
+            break;
+
+        case KELP_INITIATE_WITHDRAW:
+            context->next_param = TOKEN_ADDR;
+            strlcpy(context->ticker, "ETH", sizeof(context->ticker));
+            break;
+
+        case KELP_CLAIM_WITHDRAW:
+            context->next_param = TOKEN_ADDR;
+            strlcpy(context->ticker, "ETH", sizeof(context->ticker));
             break;
 
         // Keep this
