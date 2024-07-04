@@ -165,6 +165,7 @@ void handle_query_contract_ui(ethQueryContractUI_t *msg) {
         case ETH_MATICX_CLAIM_WITHDRAWAL:
         case POLYGON_CHILDPOOL_CLAIM_MATICX_SWAP:
         case BSC_STAKEMANAGER_CLAIM_WITHDRAW:
+        case KELP_CLAIM_WITHDRAW:
             ret = set_claim_ui(msg, context);
             break;
 

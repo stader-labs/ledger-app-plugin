@@ -29,8 +29,6 @@ static void handle_stake(ethPluginProvideParameter_t *msg, context_t *context) {
 }
 
 static void handle_unstake(ethPluginProvideParameter_t *msg, context_t *context) {
-    // TODO: check if it needs to be reverted
-
     switch (context->next_param) {
         case UNSTAKE_AMOUNT:
             handle_amount_received(msg, context);
@@ -171,6 +169,11 @@ void handle_provide_parameter(ethPluginProvideParameter_t *msg) {
             break;
         case KELP_INITIATE_WITHDRAW:
             handle_kelp_initiate_withdraw(msg, context);
+            break;
+
+        case KELP_CLAIM_WITHDRAW:
+            copy_address(context->token_addr, msg->parameter, sizeof(context->token_addr));
+            context->next_param = UNEXPECTED_PARAMETER;
             break;
 
         default:

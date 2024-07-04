@@ -48,6 +48,11 @@ void handle_query_contract_id(ethQueryContractID_t *msg) {
             msgVersion = "Unstake";
             break;
 
+        case KELP_CLAIM_WITHDRAW:
+            strlcpy(msg->name, "Kelp", msg->nameLength);
+            msgVersion = "Claim";
+            break;
+
         default:
             PRINTF("Selector index: %d not supported\n", context->selectorIndex);
             msg->result = ETH_PLUGIN_RESULT_ERROR;
