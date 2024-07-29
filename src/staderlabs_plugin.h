@@ -32,9 +32,9 @@
     X(POLYGON_CHILDPOOL_SWAP_MATIC_FOR_MATICX_VIA_INSTANT_POOL, 0xc78cf1a0) \
     X(POLYGON_CHILDPOOL_REQUEST_MATICX_SWAP, 0x48eaf6d6)                    \
     X(POLYGON_CHILDPOOL_CLAIM_MATICX_SWAP, 0x77baf209)                      \
-    X(BSC_STAKEMANAGER_DEPOSIT, 0xd0e30db0)                                 \
-    X(BSC_STAKEMANAGER_REQUEST_WITHDRAW, 0x745400c9)                        \
-    X(BSC_STAKEMANAGER_CLAIM_WITHDRAW, 0xb13acedd)                          \
+    X(BSC_STAKEMANAGER_DEPOSIT, 0x9ddb511a)                                 \
+    X(BSC_STAKEMANAGER_REQUEST_WITHDRAW, 0x0d57afa6)                        \
+    X(BSC_STAKEMANAGER_CLAIM_WITHDRAW, 0xf8444436)                          \
     X(ETHX_DEPOSIT, 0xb7482509)                                             \
     X(ETHX_REQUEST_WITHDRAW, 0x1f7ec122)                                    \
     X(ETHX_CLAIM, 0x379607f5)                                               \

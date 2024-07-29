@@ -7,13 +7,13 @@ import {
   serializeTx,
 } from "../test.fixture";
 
-const contractAddr = "0x7276241a669489e4bbb76f63d2a43bfe63080f2f";
+const contractAddr = "0x2f9b0eb7e7f5978c3cbe68ef897b15de15408fde";
 const pluginName = "staderlabs";
 const testNetwork = "bsc";
-const chainID = 56;
+const chainID = 97;
 const signedPlugin = false;
-// Test from replayed transaction: https://bscscan.com/tx/0xe88dd6cf1773a423b142b2823db99826a7ef95d8431a21cf5cb2005680a909e3
-const inputData = "0xd0e30db0";
+// Test from replayed transaction: https://testnet.bscscan.com/tx/0x6d0bab1856bfe96921c75132c8acfe9e24b7eb2a23afd166d3e5fc7f874a88b3
+const inputData = "0x9ddb511a0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000004065313663623065316333353133303164333338656661343334656531646166336631393335386363633363666161643163386264323733663736633133313561";
 
 nano_models.forEach(function (model) {
   test(
@@ -32,7 +32,7 @@ nano_models.forEach(function (model) {
         // Navigate the display by pressing the right button `right_clicks` times, then pressing both buttons to accept the transaction.
         await sim.navigateAndCompareSnapshots(
           ".",
-          testNetwork + "_bnbx_" + model.name + "_deposit",
+          testNetwork + "_bnbx_deposit_"+ model.name,
           [right_clicks, 0]
         );
 

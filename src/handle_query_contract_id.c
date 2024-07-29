@@ -19,8 +19,7 @@ void handle_query_contract_id(ethQueryContractID_t *msg) {
             msgVersion = "Stake";
             break;
 
-        // case BSC_STAKEMANAGER_REQUEST_WITHDRAW:
-        // the selector matches with `ETH_MATICX_REQUEST_WITHDRAW`
+        case BSC_STAKEMANAGER_REQUEST_WITHDRAW:
         case ETHX_REQUEST_WITHDRAW:
         case ETH_MATICX_REQUEST_WITHDRAW:
         case POLYGON_CHILDPOOL_REQUEST_MATICX_SWAP:
@@ -29,8 +28,9 @@ void handle_query_contract_id(ethQueryContractID_t *msg) {
 
         case ETHX_CLAIM:
         case ETH_MATICX_CLAIM_WITHDRAWAL:
+        // case BSC_STAKEMANAGER_CLAIM_WITHDRAW:
+        // selector is same as ETH_MATICX_CLAIM_WITHDRAWAL
         case POLYGON_CHILDPOOL_CLAIM_MATICX_SWAP:
-        case BSC_STAKEMANAGER_CLAIM_WITHDRAW:
             msgVersion = "Claim";
             break;
 

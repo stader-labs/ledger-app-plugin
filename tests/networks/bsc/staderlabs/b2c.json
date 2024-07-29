@@ -1,23 +1,23 @@
 {
-  "chainId": 56,
+  "chainId": 97,
   "contracts": [
     {
-      "address": "0x7276241a669489e4bbb76f63d2a43bfe63080f2f",
-      "contractName": "StakeManager",
+      "address": "0x2f9b0eb7e7f5978c3cbe68ef897b15de15408fde",
+      "contractName": "StakeManagerV2",
       "selectors": {
-        "0xd0e30db0": {
+        "0x9ddb511a": {
           "erc20OfInterest": [],
-          "method": "deposit",
+          "method": "delegate",
           "plugin": "Staderlabs"
         },
-        "0x745400c9": {
+        "0x0d57afa6": {
           "erc20OfInterest": [],
           "method": "requestWithdraw",
           "plugin": "Staderlabs"
         },
-        "0xb13acedd": {
+        "0xf8444436": {
           "erc20OfInterest": [],
-          "method": "claimWithdraw",
+          "method": "claimWithdrawal",
           "plugin": "Staderlabs"
         }
       }
