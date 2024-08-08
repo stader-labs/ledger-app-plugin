@@ -35,16 +35,13 @@
     X(BSC_STAKEMANAGER_DEPOSIT, 0xd0e30db0)                                 \
     X(BSC_STAKEMANAGER_REQUEST_WITHDRAW, 0x745400c9)                        \
     X(BSC_STAKEMANAGER_CLAIM_WITHDRAW, 0xb13acedd)                          \
-    X(FTM_DEPOSIT, 0xd0e30db0)                                              \
-    X(FTM_UNDELEGATE, 0x4f864df4)                                           \
-    X(FTM_WITHDRAW, 0x441a3e70)                                             \
     X(ETHX_DEPOSIT, 0xb7482509)                                             \
     X(ETHX_REQUEST_WITHDRAW, 0x1f7ec122)                                    \
     X(ETHX_CLAIM, 0x379607f5)                                               \
-    X(ETHX_DEPOSIT_LEGACY, 0xf340fa01)                                      \
-    X(ETHX_REQUEST_WITHDRAW_LEGACY, 0xccc143b8)                             \
     X(KELP_LST_DEPOSIT, 0xc3ae1766)                                         \
-    X(KELP_ETH_DEPOSIT, 0x72c51c0b)
+    X(KELP_ETH_DEPOSIT, 0x72c51c0b)                                         \
+    X(KELP_INITIATE_WITHDRAW, 0xc8393ba9)                                   \
+    X(KELP_CLAIM_WITHDRAW, 0x6dbaf9ee)
 
 // Xmacro helpers to define the enum and map
 // Do not modify !

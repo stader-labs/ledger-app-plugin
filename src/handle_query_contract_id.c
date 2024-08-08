@@ -13,21 +13,17 @@ void handle_query_contract_id(ethQueryContractID_t *msg) {
     // EDIT THIS: Adapt the cases by modifying the strings you pass to `strlcpy`.
     switch (context->selectorIndex) {
         case ETHX_DEPOSIT:
-        case ETHX_DEPOSIT_LEGACY:
         case ETH_MATICX_SUBMIT:
         case POLYGON_CHILDPOOL_SWAP_MATIC_FOR_MATICX_VIA_INSTANT_POOL:
-        // case FTM_DEPOSIT: // the selector matches with `BSC_STAKEMANAGER_DEPOSIT`
         case BSC_STAKEMANAGER_DEPOSIT:
             msgVersion = "Stake";
             break;
 
-        case ETHX_REQUEST_WITHDRAW:
-        case ETHX_REQUEST_WITHDRAW_LEGACY:
-        case ETH_MATICX_REQUEST_WITHDRAW:
-        case POLYGON_CHILDPOOL_REQUEST_MATICX_SWAP:
         // case BSC_STAKEMANAGER_REQUEST_WITHDRAW:
         // the selector matches with `ETH_MATICX_REQUEST_WITHDRAW`
-        case FTM_UNDELEGATE:
+        case ETHX_REQUEST_WITHDRAW:
+        case ETH_MATICX_REQUEST_WITHDRAW:
+        case POLYGON_CHILDPOOL_REQUEST_MATICX_SWAP:
             msgVersion = "Unstake";
             break;
 
@@ -35,7 +31,6 @@ void handle_query_contract_id(ethQueryContractID_t *msg) {
         case ETH_MATICX_CLAIM_WITHDRAWAL:
         case POLYGON_CHILDPOOL_CLAIM_MATICX_SWAP:
         case BSC_STAKEMANAGER_CLAIM_WITHDRAW:
-        case FTM_WITHDRAW:
             msgVersion = "Claim";
             break;
 
@@ -46,6 +41,16 @@ void handle_query_contract_id(ethQueryContractID_t *msg) {
         case KELP_ETH_DEPOSIT:
             strlcpy(msg->name, "Kelp", msg->nameLength);
             msgVersion = "Native Restake";
+            break;
+
+        case KELP_INITIATE_WITHDRAW:
+            strlcpy(msg->name, "Kelp", msg->nameLength);
+            msgVersion = "Unstake";
+            break;
+
+        case KELP_CLAIM_WITHDRAW:
+            strlcpy(msg->name, "Kelp", msg->nameLength);
+            msgVersion = "Claim";
             break;
 
         default:
