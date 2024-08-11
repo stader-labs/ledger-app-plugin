@@ -7,10 +7,10 @@ import {
   serializeTx,
 } from "../test.fixture";
 
-const contractAddr = "0x2f9b0eb7e7f5978c3cbe68ef897b15de15408fde";
+const contractAddr = "0x3b961e83400d51e6e1af5c450d3c7d7b80588d28";
 const pluginName = "staderlabs";
 const testNetwork = "bsc";
-const chainID = 97;
+const chainID = 56;
 const signedPlugin = false;
 // Test from replayed transaction: https://testnet.bscscan.com/tx/0x4933296ae725dbdd0e1a093fdf508f88ad22c9ae315282eccccda148405c9856
 const inputData =

@@ -2,7 +2,7 @@
   "chainId": 97,
   "contracts": [
     {
-      "address": "0x2f9b0eb7e7f5978c3cbe68ef897b15de15408fde",
+      "address": "0x3b961e83400d51e6e1af5c450d3c7d7b80588d28",
       "contractName": "StakeManagerV2",
       "selectors": {
         "0x9ddb511a": {

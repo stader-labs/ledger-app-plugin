@@ -40,14 +40,14 @@ static bool set_unstake_ui(ethQueryContractUI_t *msg, context_t *context) {
 }
 
 static bool set_claim_ui(ethQueryContractUI_t *msg, const context_t *context) {
+    strlcpy(msg->title, "Claim", msg->titleLength);
     // to handle case BSC_STAKEMANAGER_CLAIM_WITHDRAW
     // selector is same as ETH_MATICX_CLAIM_WITHDRAWAL
     if (memcmp(msg->network_ticker, "BNB", 3) == 0) {
-        strlcpy(context->ticker, msg->network_ticker, sizeof(context->ticker));
+        strlcpy(msg->msg, msg->network_ticker, msg->msgLength);
+    } else {
+        strlcpy(msg->msg, context->ticker, msg->msgLength);
     }
-
-    strlcpy(msg->title, "Claim", msg->titleLength);
-    strlcpy(msg->msg, context->ticker, msg->msgLength);
     return true;
 }
 
