@@ -29,11 +29,6 @@ static void handle_stake(ethPluginProvideParameter_t *msg, context_t *context) {
 }
 
 static void handle_unstake(ethPluginProvideParameter_t *msg, context_t *context) {
-    if (context->skip_next_param) {  // this is currently only useful in ftm_undelegate
-        context->skip_next_param = false;
-        return;
-    }
-
     switch (context->next_param) {
         case UNSTAKE_AMOUNT:
             handle_amount_received(msg, context);
@@ -87,6 +82,46 @@ static void handle_ethx_request_withdraw(ethPluginProvideParameter_t *msg, conte
     }
 }
 
+static void handle_kelp_lst_deposit(ethPluginProvideParameter_t *msg, context_t *context) {
+    if (context->skip_next_param) {
+        return;
+    }
+
+    switch (context->next_param) {
+        case TOKEN_ADDR:
+            copy_address(context->token_addr, msg->parameter, sizeof(context->token_addr));
+            context->next_param = STAKE_AMOUNT;
+            break;
+
+        case STAKE_AMOUNT:
+            handle_amount_received(msg, context);
+            context->next_param = UNEXPECTED_PARAMETER;
+            context->skip_next_param = true;
+            break;
+
+        // Keep this
+        default:
+            handle_unsupported_param(msg);
+            break;
+    }
+}
+
+static void handle_kelp_initiate_withdraw(ethPluginProvideParameter_t *msg, context_t *context) {
+    switch (context->next_param) {
+        case TOKEN_ADDR:
+            copy_address(context->token_addr, msg->parameter, sizeof(context->token_addr));
+            context->next_param = UNSTAKE_AMOUNT;
+            break;
+        case UNSTAKE_AMOUNT:
+            handle_amount_received(msg, context);
+            context->next_param = UNEXPECTED_PARAMETER;
+            break;
+        default:
+            handle_unsupported_param(msg);
+            break;
+    }
+}
+
 void handle_provide_parameter(ethPluginProvideParameter_t *msg) {
     context_t *context = (context_t *) msg->pluginContext;
     // We use `%.*H`: it's a utility function to print bytes. You first give
@@ -101,12 +136,10 @@ void handle_provide_parameter(ethPluginProvideParameter_t *msg) {
 
     // EDIT THIS: adapt the cases and the names of the functions.
     switch (context->selectorIndex) {
-        case ETHX_DEPOSIT_LEGACY:
         case ETHX_DEPOSIT:
             handle_ethx_deposit(msg, context);
             break;
 
-        case ETHX_REQUEST_WITHDRAW_LEGACY:
         case ETHX_REQUEST_WITHDRAW:
             handle_ethx_request_withdraw(msg, context);
             break;
@@ -115,21 +148,31 @@ void handle_provide_parameter(ethPluginProvideParameter_t *msg) {
             handle_stake(msg, context);
             break;
 
+        // case BSC_STAKEMANAGER_REQUEST_WITHDRAW:
+        // the selector matches with `ETH_MATICX_REQUEST_WITHDRAW`
         case ETH_MATICX_REQUEST_WITHDRAW:
         case POLYGON_CHILDPOOL_REQUEST_MATICX_SWAP:
-        case BSC_STAKEMANAGER_REQUEST_WITHDRAW:
-        case FTM_UNDELEGATE:
             handle_unstake(msg, context);
             break;
 
+        case KELP_ETH_DEPOSIT:
         case ETHX_CLAIM:
         case ETH_MATICX_CLAIM_WITHDRAWAL:
         case POLYGON_CHILDPOOL_SWAP_MATIC_FOR_MATICX_VIA_INSTANT_POOL:
         case POLYGON_CHILDPOOL_CLAIM_MATICX_SWAP:
         case BSC_STAKEMANAGER_DEPOSIT:
-        case FTM_DEPOSIT:
         case BSC_STAKEMANAGER_CLAIM_WITHDRAW:
-        case FTM_WITHDRAW:
+            context->next_param = UNEXPECTED_PARAMETER;
+            break;
+        case KELP_LST_DEPOSIT:
+            handle_kelp_lst_deposit(msg, context);
+            break;
+        case KELP_INITIATE_WITHDRAW:
+            handle_kelp_initiate_withdraw(msg, context);
+            break;
+
+        case KELP_CLAIM_WITHDRAW:
+            copy_address(context->token_addr, msg->parameter, sizeof(context->token_addr));
             context->next_param = UNEXPECTED_PARAMETER;
             break;
 

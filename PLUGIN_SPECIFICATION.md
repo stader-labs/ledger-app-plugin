@@ -34,19 +34,6 @@ Functions covered by above contract/s :
 |StakeManager | requestWithdraw(uint256 \_amountInBnbX) | `0x745400c9`| `_amountInBnbX` |
 |StakeManager | claimWithdraw(uint256 \_idx) | `0xb13acedd`| |
 
-#### FTMx
-
-| Network | Contract Name | Smart Contract                               |
-| ------- | ------------- | -------------------------------------------- |
-| Fantom  | FTMStaking    | `0xb458bfc855ab504a8a327720fcef98886065529b` |
-
-Functions covered by above contract/s :
-|Contract | Function | Selector | Displayed Parameters |
-| --- | --- | --- | --- |
-|FTMStaking | deposit() | `0xd0e30db0`| native_token_amount (ftm) |
-|FTMStaking | undelegate(uint256 wrID, uint256 amountFTMx, uint256 minAmountFTM) | `0x4f864df4`| `amountFTMx` |
-|FTMStaking | withdraw(uint256 wrID, uint256 bitmaskToSkip) | `0x441a3e70`| |
-
 #### ETHx
 
 | Network  | Contract Name           | Smart Contract                               |
@@ -60,5 +47,19 @@ Functions covered by above contract/s :
 |StaderStakePoolsManager | deposit(address \_receiver, string calldata \_referralId) | `0xb7482509`| `_receiver`, native_token_amount (eth) |
 |UserWithdrawalManager | requestWithdraw(uint256 \_ethXAmount, address \_owner, string calldata \_referralId) | `0x1f7ec122`| `_ethXAmount`, `_owner` |
 |UserWithdrawalManager | claim(uint256 \_requestId) | `0x379607f5`| |
-|StaderStakePoolsManager | deposit(address \_receiver) | `0xf340fa01`| `_receiver`, native_token_amount (eth) |
-|UserWithdrawalManager | requestWithdraw(uint256 \_ethXAmount, address \_owner) | `0xccc143b8`| `_ethXAmount`, `_owner` |
+
+#### KELP
+
+| Network | Contract Name | Smart Contract                               |
+| ------- | ------------- | -------------------------------------------- |
+| Ethereum  | LRTDepositPool    | `0x036676389e48133B63a802f8635AD39E752D375D` |
+| Ethereum  | LRTWithdrawalManager    | `0x62de59c08eb5dae4b7e6f7a8cad3006d6965ec16` |
+
+
+Functions covered by above contract/s :
+|Contract | Function | Selector | Displayed Parameters |
+| --- | --- | --- | --- |
+|LRTDepositPool | depositETH(uint256 minRSETHAmountExpected, string calldata referralId) | `0x72c51c0b`| native_token_amount (eth) |
+|LRTDepositPool | depositAsset(address asset, uint256 depositAmount, uint256 minRSETHAmountExpected, string calldata referralId) | `0xc3ae1766`| `asset`, `depositAmount` |
+|LRTWithdrawalManager | initiateWithdrawal(address asset, uint256 rsETHUnstaked) | `0xc8393ba9`| `asset`, `rsETHUnstaked` |
+|LRTWithdrawalManager | completeWithdrawal(address asset) | `0x6dbaf9ee`| `asset` |
