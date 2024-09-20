@@ -1,16 +1,17 @@
-# Compilation of Ledger's app
-src/glyphs.c
-src/glyphs.h
-bin/
-debug/
-dep/
-obj/
-tests/elfs/
-build/
+# Application compilation output and artifacts
+/bin/
+/debug/
+/build/
+
 
 # Editors
 .idea/
 .vscode
+
+# Fuzzing
+fuzzing/build/
+fuzzing/corpus/
+fuzzing/out/
 
 # Python
 *.pyc[cod]
@@ -20,7 +21,14 @@ __pycache__/
 .eggs/
 .python-version
 
-# JS
-tests/node_modules
-tests/lib
-tests/elfs
+# Virtual env for sideload (macOS and Windows)
+ledger/
+
+# Temporary directory with snapshots taken during test runs
+tests/snapshots-tmp/
+
+# Directory storing the ethereum build output for tests run
+tests/.test_dependencies/*
+!tests/.test_dependencies/ethereum/
+tests/.test_dependencies/ethereum/*
+!tests/.test_dependencies/ethereum/.ethereum_application_build_goes_there
