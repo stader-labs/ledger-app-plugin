@@ -47,6 +47,7 @@ def get_appname_from_makefile() -> str:
 PLUGIN_NAME = get_appname_from_makefile()
 
 def load_contract(address):
+    address = address.lower()
     with open("%s/%s.abi.json" % (ABIS_FOLDER, address)) as file:
         return Web3().eth.contract(
             abi=json.load(file),
