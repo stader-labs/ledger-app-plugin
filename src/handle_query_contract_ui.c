@@ -1,5 +1,5 @@
 #include <stdbool.h>
-#include "staderlabs_plugin.h"
+#include "plugin.h"
 
 static bool set_native_token_stake_ui(ethQueryContractUI_t *msg) {
     strlcpy(msg->title, "Stake", msg->titleLength);

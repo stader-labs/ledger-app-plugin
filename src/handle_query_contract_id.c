@@ -1,4 +1,4 @@
-#include "staderlabs_plugin.h"
+#include "plugin.h"
 
 // Sets the first screen to display.
 void handle_query_contract_id(ethQueryContractID_t *msg) {
