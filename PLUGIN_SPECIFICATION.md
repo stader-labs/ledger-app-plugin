@@ -2,7 +2,7 @@
 
 ## About
 
-This documentation describes the smart contracts and functions supported by the staderlabs plugin.
+Below Ledger Live Apps and their corresponding smart contract functionalities are supported by this plugin.
 
 #### MATICx
 
@@ -48,7 +48,7 @@ Functions covered by above contract/s :
 |UserWithdrawalManager | requestWithdraw(uint256 \_ethXAmount, address \_owner, string calldata \_referralId) | `0x1f7ec122`| `_ethXAmount`, `_owner` |
 |UserWithdrawalManager | claim(uint256 \_requestId) | `0x379607f5`| |
 
-#### KELP
+#### KELP (will be deprecated soon)
 
 | Network | Contract Name | Smart Contract                               |
 | ------- | ------------- | -------------------------------------------- |

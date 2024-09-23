@@ -4,53 +4,26 @@ This is a plugin for the Ethereum application which helps parsing and displaying
 
 ## Setup
 
-Clone the plugin to a new folder.
+1. Clone this repo (along with git submodules)
+    ```shell
+    git clone --recurse-submodules https://github.com/LedgerHQ/app-plugin-staderlabs.git
+    ```
 
-```shell
-mkdir staderlabs_plugin_folder
-cd staderlabs_plugin_folder
+2. Make sure you have an X11 server running:
+    - On Ubuntu Linux, it should be running by default
+    - On macOS, install and launch XQuartz (make sure to go to XQuartz > Preferences > Security and check "Allow client connections")
+    - On Windows, install and launch VcXsrv (make sure to configure it to disable access control)
 
-git clone --recurse-submodules https://github.com/LedgerHQ/app-plugin-staderlabs.git
-```
+3. Install and run docker desktop
 
-Then in the same folder clone app-ethereum.
+4. Install the [Ledger Dev Tools VS Code plugin](https://marketplace.visualstudio.com/items?itemName=LedgerHQ.ledger-dev-tools&ssr=false#overview) and makes sure it's enabled
 
-```shell
-git clone --recurse-submodules https://github.com/LedgerHQ/app-ethereum.git     #app-ethereum
-```
+5. Once you have installed the plugin and open the repo, the plugin should by default try to create and start the containers. If it doesn't, you can simply click "Update Container" under "Ledger Dev Tools" in the Activity Side Bar on VS Code.
 
-Launch the docker
+6. On the "Ledger Dev Tools" side bar, Select a target and then click on Build.
 
-```shell
-brew install coreutils          #For mac users if below command errors out (realpath doesn't exist)
-sudo docker run --rm -ti -v "$(realpath .):/app" --user $(id -u $USER):$(id -g $USER) ghcr.io/ledgerhq/ledger-app-builder/ledger-app-dev-tools:latest
-```
+7. Once build is complete, click on "Run tests" to run the tests
 
-From the Docker console
-
-```shell
-#build the staderlabs plugin
-cd app-plugin-staderlabs
-make
-
-#go to tests folder inside staderlabs plugin and build the ".elf" files for testing
-cd tests
-./build_local_test_elfs.sh
-```
-
-## Tests
-
-Open a new Terminal and go to staderlabs_plugin_folder
-
-```shell
-cd app-plugin-staderlabs/tests      #go to tests folder inside app-plugin-staderlabs
-yarn install                        #install node packages
-yarn test                           #run tests
-```
-
-## Ethereum-App
-
-Need more information about the interface, the architecture, or general stuff about ethereum plugins? You can find more about them in the [ethereum-app documentation](https://github.com/LedgerHQ/app-ethereum/blob/master/doc/ethapp_plugins.asc).
 
 ## Smart Contracts
 
