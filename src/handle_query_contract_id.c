@@ -34,6 +34,25 @@ void handle_query_contract_id(ethQueryContractID_t *msg) {
             msgVersion = "Claim";
             break;
 
+        case KELP_LST_DEPOSIT:
+            strlcpy(msg->name, "Kelp", msg->nameLength);
+            msgVersion = "LST Restake";
+            break;
+        case KELP_ETH_DEPOSIT:
+            strlcpy(msg->name, "Kelp", msg->nameLength);
+            msgVersion = "Native Restake";
+            break;
+
+        case KELP_INITIATE_WITHDRAW:
+            strlcpy(msg->name, "Kelp", msg->nameLength);
+            msgVersion = "Unstake";
+            break;
+
+        case KELP_CLAIM_WITHDRAW:
+            strlcpy(msg->name, "Kelp", msg->nameLength);
+            msgVersion = "Claim";
+            break;
+
         default:
             PRINTF("Selector index: %d not supported\n", context->selectorIndex);
             msg->result = ETH_PLUGIN_RESULT_ERROR;

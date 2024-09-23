@@ -86,6 +86,25 @@ void handle_init_contract(ethPluginInitContract_t *msg) {
             context->next_param = UNEXPECTED_PARAMETER;
             strlcpy(context->ticker, "MATIC", sizeof(context->ticker));
             break;
+
+        case KELP_LST_DEPOSIT:
+            context->next_param = TOKEN_ADDR;
+            break;
+
+        case KELP_ETH_DEPOSIT:
+            context->next_param = UNEXPECTED_PARAMETER;
+            break;
+
+        case KELP_INITIATE_WITHDRAW:
+            context->next_param = TOKEN_ADDR;
+            strlcpy(context->ticker, "ETH", sizeof(context->ticker));
+            break;
+
+        case KELP_CLAIM_WITHDRAW:
+            context->next_param = TOKEN_ADDR;
+            strlcpy(context->ticker, "ETH", sizeof(context->ticker));
+            break;
+
         // Keep this
         default:
             PRINTF("Missing selectorIndex: %d\n", context->selectorIndex);
