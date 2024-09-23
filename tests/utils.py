@@ -72,7 +72,7 @@ def run_test(contract, data, backend, firmware, navigator, test_name, wallet_add
         "maxPriorityFeePerGas": Web3.to_wei(1.5, "gwei"),
         "gas": gas,
         "to": contract.address,
-        "value": value,
+        "value": Web3.to_wei(value, "ether"),
         "chainId": chain_id,
         "data": data
     }
