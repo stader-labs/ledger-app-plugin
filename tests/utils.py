@@ -57,7 +57,7 @@ def load_contract(address):
             )
         )
 
-def run_test(contract, data, backend, firmware, navigator, test_name, wallet_addr, value=0, gas=300000):
+def run_test(contract, data, backend, firmware, navigator, test_name, wallet_addr, chain_id=ChainId.ETH, value=0, gas=300000):
     client = EthAppClient(backend)
 
     # first setup the external plugin
@@ -73,7 +73,7 @@ def run_test(contract, data, backend, firmware, navigator, test_name, wallet_add
         "gas": gas,
         "to": contract.address,
         "value": value,
-        "chainId": ChainId.ETH,
+        "chainId": chain_id,
         "data": data
     }
 

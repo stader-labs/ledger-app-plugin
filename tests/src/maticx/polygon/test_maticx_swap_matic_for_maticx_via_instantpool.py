@@ -1,3 +1,4 @@
+from eth_typing import ChainId
 from web3 import Web3
 from tests.utils import run_test, load_contract
 
@@ -14,6 +15,7 @@ def test_maticx_swap_matic_for_maticx_via_instantpool(backend, firmware, navigat
         firmware, 
         navigator, 
         test_name, 
-        wallet_addr
+        wallet_addr,
+        ChainId.MATIC
     )
 

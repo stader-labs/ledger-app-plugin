@@ -1,3 +1,4 @@
+from eth_typing import ChainId
 from web3 import Web3
 from tests.utils import run_test, load_contract
 
@@ -14,6 +15,7 @@ def test_bnbx_deposit(backend, firmware, navigator, test_name, wallet_addr):
         firmware, 
         navigator, 
         test_name, 
-        wallet_addr
+        wallet_addr,
+        ChainId.BNB,
     )
 
