@@ -37,11 +37,7 @@
     X(BSC_STAKEMANAGER_CLAIM_WITHDRAW, 0xf8444436)                          \
     X(ETHX_DEPOSIT, 0xb7482509)                                             \
     X(ETHX_REQUEST_WITHDRAW, 0x1f7ec122)                                    \
-    X(ETHX_CLAIM, 0x379607f5)                                               \
-    X(KELP_LST_DEPOSIT, 0xc3ae1766)                                         \
-    X(KELP_ETH_DEPOSIT, 0x72c51c0b)                                         \
-    X(KELP_INITIATE_WITHDRAW, 0xc8393ba9)                                   \
-    X(KELP_CLAIM_WITHDRAW, 0x6dbaf9ee)
+    X(ETHX_CLAIM, 0x379607f5)
 
 // Xmacro helpers to define the enum and map
 // Do not modify !
