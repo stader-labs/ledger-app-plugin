@@ -2,7 +2,7 @@
 
 ## About
 
-This documentation describes the smart contracts and functions supported by the staderlabs plugin.
+Below Ledger Live Apps and their corresponding smart contract functionalities are supported by this plugin.
 
 #### MATICx
 
@@ -25,14 +25,14 @@ Functions covered by above contract/s :
 
 | Network | Contract Name | Smart Contract                               |
 | ------- | ------------- | -------------------------------------------- |
-| BSC     | StakeManager  | `0x7276241a669489E4BBB76f63d2A43Bfe63080F2F` |
+| BSC     | StakeManager  | `0x3b961e83400d51e6e1af5c450d3c7d7b80588d28` |
 
 Functions covered by above contract/s :
 |Contract | Function | Selector | Displayed Parameters |
 | --- | --- | --- | --- |
-|StakeManager | deposit() | `0xd0e30db0`| native_token_amount (bnb) |
-|StakeManager | requestWithdraw(uint256 \_amountInBnbX) | `0x745400c9`| `_amountInBnbX` |
-|StakeManager | claimWithdraw(uint256 \_idx) | `0xb13acedd`| |
+|StakeManager | delegate(string calldata \_referralId) | `0x9ddb511a`| native_token_amount (bnb) |
+|StakeManager | requestWithdraw(uint256 \_amount, string calldata \_referralId) | `0x0d57afa6`| `_amount` |
+|StakeManager | claimWithdrawal(uint256 \_idx) | `0xf8444436`| |
 
 #### ETHx
 
@@ -48,7 +48,7 @@ Functions covered by above contract/s :
 |UserWithdrawalManager | requestWithdraw(uint256 \_ethXAmount, address \_owner, string calldata \_referralId) | `0x1f7ec122`| `_ethXAmount`, `_owner` |
 |UserWithdrawalManager | claim(uint256 \_requestId) | `0x379607f5`| |
 
-#### KELP
+#### KELP (will be deprecated soon)
 
 | Network | Contract Name | Smart Contract                               |
 | ------- | ------------- | -------------------------------------------- |

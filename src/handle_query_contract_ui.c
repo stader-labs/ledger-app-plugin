@@ -1,5 +1,5 @@
 #include <stdbool.h>
-#include "staderlabs_plugin.h"
+#include "plugin.h"
 
 static bool set_native_token_stake_ui(ethQueryContractUI_t *msg) {
     strlcpy(msg->title, "Stake", msg->titleLength);
@@ -31,11 +31,6 @@ static bool set_stake_ui(ethQueryContractUI_t *msg, const context_t *context) {
 
 static bool set_unstake_ui(ethQueryContractUI_t *msg, context_t *context) {
     strlcpy(msg->title, "Unstake", msg->titleLength);
-
-    if (memcmp(msg->network_ticker, "BNB", 3) == 0) {
-        strlcpy(context->ticker, "BNBX", sizeof(context->ticker));
-    }
-
     return amountToString(context->amount_received,
                           sizeof(context->amount_received),
                           WEI_TO_ETHER,
@@ -46,7 +41,13 @@ static bool set_unstake_ui(ethQueryContractUI_t *msg, context_t *context) {
 
 static bool set_claim_ui(ethQueryContractUI_t *msg, const context_t *context) {
     strlcpy(msg->title, "Claim", msg->titleLength);
-    strlcpy(msg->msg, context->ticker, msg->msgLength);
+    // to handle case BSC_STAKEMANAGER_CLAIM_WITHDRAW
+    // selector is same as ETH_MATICX_CLAIM_WITHDRAWAL
+    if (memcmp(msg->network_ticker, "BNB", 3) == 0) {
+        strlcpy(msg->msg, msg->network_ticker, msg->msgLength);
+    } else {
+        strlcpy(msg->msg, context->ticker, msg->msgLength);
+    }
     return true;
 }
 
@@ -154,8 +155,7 @@ void handle_query_contract_ui(ethQueryContractUI_t *msg) {
             ret = set_stake_ui(msg, context);
             break;
 
-        // case BSC_STAKEMANAGER_REQUEST_WITHDRAW:
-        // the selector matches with `ETH_MATICX_REQUEST_WITHDRAW`
+        case BSC_STAKEMANAGER_REQUEST_WITHDRAW:
         case ETH_MATICX_REQUEST_WITHDRAW:
         case POLYGON_CHILDPOOL_REQUEST_MATICX_SWAP:
             ret = set_unstake_ui(msg, context);
@@ -163,8 +163,9 @@ void handle_query_contract_ui(ethQueryContractUI_t *msg) {
 
         case ETHX_CLAIM:
         case ETH_MATICX_CLAIM_WITHDRAWAL:
+        // case BSC_STAKEMANAGER_CLAIM_WITHDRAW:
+        // selector is same as ETH_MATICX_CLAIM_WITHDRAWAL
         case POLYGON_CHILDPOOL_CLAIM_MATICX_SWAP:
-        case BSC_STAKEMANAGER_CLAIM_WITHDRAW:
         case KELP_CLAIM_WITHDRAW:
             ret = set_claim_ui(msg, context);
             break;

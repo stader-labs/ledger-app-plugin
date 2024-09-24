@@ -1,4 +1,4 @@
-#include "staderlabs_plugin.h"
+#include "plugin.h"
 
 // Copy amount sent parameter to amount_received
 static void handle_amount_received(const ethPluginProvideParameter_t *msg, context_t *context) {
@@ -29,6 +29,9 @@ static void handle_stake(ethPluginProvideParameter_t *msg, context_t *context) {
 }
 
 static void handle_unstake(ethPluginProvideParameter_t *msg, context_t *context) {
+    if (context->skip_next_param) {
+        return;
+    }
     switch (context->next_param) {
         case UNSTAKE_AMOUNT:
             handle_amount_received(msg, context);
@@ -148,8 +151,7 @@ void handle_provide_parameter(ethPluginProvideParameter_t *msg) {
             handle_stake(msg, context);
             break;
 
-        // case BSC_STAKEMANAGER_REQUEST_WITHDRAW:
-        // the selector matches with `ETH_MATICX_REQUEST_WITHDRAW`
+        case BSC_STAKEMANAGER_REQUEST_WITHDRAW:
         case ETH_MATICX_REQUEST_WITHDRAW:
         case POLYGON_CHILDPOOL_REQUEST_MATICX_SWAP:
             handle_unstake(msg, context);
@@ -158,10 +160,11 @@ void handle_provide_parameter(ethPluginProvideParameter_t *msg) {
         case KELP_ETH_DEPOSIT:
         case ETHX_CLAIM:
         case ETH_MATICX_CLAIM_WITHDRAWAL:
+        // case BSC_STAKEMANAGER_CLAIM_WITHDRAW:
+        // selector is same as ETH_MATICX_CLAIM_WITHDRAWAL
         case POLYGON_CHILDPOOL_SWAP_MATIC_FOR_MATICX_VIA_INSTANT_POOL:
         case POLYGON_CHILDPOOL_CLAIM_MATICX_SWAP:
         case BSC_STAKEMANAGER_DEPOSIT:
-        case BSC_STAKEMANAGER_CLAIM_WITHDRAW:
             context->next_param = UNEXPECTED_PARAMETER;
             break;
         case KELP_LST_DEPOSIT:

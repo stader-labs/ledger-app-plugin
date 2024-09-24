@@ -1,5 +1,5 @@
 #include "plugin_utils.h"
-#include "staderlabs_plugin.h"
+#include "plugin.h"
 
 // Called once to init.
 void handle_init_contract(ethPluginInitContract_t *msg) {
@@ -68,23 +68,23 @@ void handle_init_contract(ethPluginInitContract_t *msg) {
             context->next_param = UNEXPECTED_PARAMETER;
             break;
 
+        case BSC_STAKEMANAGER_REQUEST_WITHDRAW:
+            context->next_param = UNSTAKE_AMOUNT;
+            strlcpy(context->ticker, "BNBX", sizeof(context->ticker));
+            break;
+
         case ETH_MATICX_REQUEST_WITHDRAW:
-        // case BSC_STAKEMANAGER_REQUEST_WITHDRAW:
-        // the selector matches with `ETH_MATICX_REQUEST_WITHDRAW`
         case POLYGON_CHILDPOOL_REQUEST_MATICX_SWAP:
             context->next_param = UNSTAKE_AMOUNT;
             strlcpy(context->ticker, "MATICX", sizeof(context->ticker));
             break;
 
         case ETH_MATICX_CLAIM_WITHDRAWAL:
+        // case BSC_STAKEMANAGER_CLAIM_WITHDRAW:
+        // selector is same as ETH_MATICX_CLAIM_WITHDRAWAL
         case POLYGON_CHILDPOOL_CLAIM_MATICX_SWAP:
             context->next_param = UNEXPECTED_PARAMETER;
             strlcpy(context->ticker, "MATIC", sizeof(context->ticker));
-            break;
-
-        case BSC_STAKEMANAGER_CLAIM_WITHDRAW:
-            context->next_param = UNEXPECTED_PARAMETER;
-            strlcpy(context->ticker, "BNB", sizeof(context->ticker));
             break;
 
         case KELP_LST_DEPOSIT:
